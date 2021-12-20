@@ -11,7 +11,8 @@ import { RestartDialogComponent } from './juego/restart-dialog/restart-dialog.co
 })
 export class AppComponent implements OnInit {
 
-  cardImages = [
+  //Obtener la id a través del get
+  cardImages:string[] = [
     'pDGNBK9A0sk',
     'fYDrhbVlV1E',
     'qoXgaF27zBc',
