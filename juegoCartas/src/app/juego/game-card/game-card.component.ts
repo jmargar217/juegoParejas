@@ -32,14 +32,21 @@ import { CardData } from '../interfaces/cardData.interface';
   ]
 })
 export class GameCardComponent implements OnInit {
+
+  @Input()
+  urlCartas!: string[];
+
   @Input()
   data!: CardData;
 
   @Output() cardClicked = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+
   }
 
 }

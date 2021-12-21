@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardData } from './juego/interfaces/cardData.interface';
 import { RestartDialogComponent } from './juego/restart-dialog/restart-dialog.component';
+import { ServiceJuegoService } from './juego/service/service-juego.service';
 
 
 @Component({
@@ -12,13 +13,8 @@ import { RestartDialogComponent } from './juego/restart-dialog/restart-dialog.co
 export class AppComponent implements OnInit {
 
   //Obtener la id a través del get
-  cardImages:string[] = [
-    'pDGNBK9A0sk',
-    'fYDrhbVlV1E',
-    'qoXgaF27zBc',
-    'b9drVB7xIOI',
-    'TQ-q5WAVHj0'
-  ];
+
+  @Output() cardImages:string[] = [];
 
   cards: CardData[] = [];
 
@@ -32,12 +28,13 @@ export class AppComponent implements OnInit {
       .map(a => a[1]);
   }
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private servicioJuego:ServiceJuegoService) {
+    this.cardImages = this.servicioJuego.obtenerImagenes();
 
   }
 
   ngOnInit(): void {
-    this.setupCards();
+
   }
 
   setupCards(): void {
